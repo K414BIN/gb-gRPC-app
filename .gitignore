@@ -1,0 +1,15 @@
+.vs/
+.git/
+ClinicClient/obj/
+ClinicClient/bin/
+ClinicService/bin/
+ClinicService/obj/
+ClinicService.Data/obj/
+ClinicService.Data/bin/
+ClinicService/vs/
+ClinicService/ClinicService.Data/bin/
+ClinicService/ClinicService.Data/obj/
+ClinicService/ClinicService/obj/
+ClinicService/ClinicService/bin/
+ClinicService/ClinicClient/bin/
+ClinicService/ClinicClient/obj/
