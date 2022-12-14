@@ -1,5 +1,8 @@
 ﻿using ClinicService.Data;
+
+using ClinicServiceProtos;
 using Grpc.Core;
+
 
 namespace ClinicServiceV2.Services
 {
@@ -11,12 +14,12 @@ namespace ClinicServiceV2.Services
         {
             _dbContext = dbContext;
         }
-    
+
 
         public override Task<CreateClientResponse> CreateClient(CreateClientRequest request, ServerCallContext context)
         {
             try
-            {   
+            {
                 var client = new Client
                 {
                     Document = request.Document,
@@ -28,7 +31,7 @@ namespace ClinicServiceV2.Services
                 _dbContext.SaveChanges();
                 var response = new CreateClientResponse
                 {
-                    ClientId = client.Id,
+                    ClientId = client.ClientId,
                     ErrCode = 0,
                     ErrMessage = ""
                 };
@@ -38,7 +41,7 @@ namespace ClinicServiceV2.Services
             catch (Exception e)
             {
                 var response = new CreateClientResponse
-                { 
+                {
                     ErrCode = 1002,
                     ErrMessage = "Internal server error."
                 };
@@ -51,11 +54,11 @@ namespace ClinicServiceV2.Services
         public override Task<GetClientsResponse> GetClients(GetClientsRequest request, ServerCallContext context)
         {
             try
-            {   
+            {
                 var response = new GetClientsResponse();
                 var clients = _dbContext.Clients.Select(client => new ClientResponse
-                { 
-                    ClientId = client.Id,
+                {
+                    ClientId = client.ClientId,
                     Document = client.Document,
                     FirstName = client.FirstName,
                     Surname = client.Surname,
