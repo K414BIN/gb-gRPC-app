@@ -1,2 +1,2 @@
 # gb-gRPC-app
-Введение в gRPC
+Расширяем свой сервис SingalR
